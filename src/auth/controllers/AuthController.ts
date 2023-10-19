@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from "express"
 import * as yup from 'yup'
 import { StatusCode } from "../../utils/status.code"
 import { ErrorMaker } from "../../utils/ErrorMaker"
