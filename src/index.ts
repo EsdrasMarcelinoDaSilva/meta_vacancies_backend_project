@@ -8,7 +8,7 @@ import { routes } from '.././routes'
 dotenv.config()
 Database.lift()
 
-const  path = express()
+export const  path = express()
 const port  = process.env.PORT || 9090
 
 path.use(express.json())
