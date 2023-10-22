@@ -10,5 +10,4 @@ const { controller } = TechSearchModule.run(errorMaker)
 
 techSearchRoutes.post('/', controller.updateSearchCount.bind(controller))
 techSearchRoutes.get('/technologies', controller.getTopFiveTechnologies.bind(controller))
-// techSearchRoutes.get('/technologies', (req, res) => controller.getTopFiveTechnologies(req, res));
 techSearchRoutes.get('/cities/:technologyId',controller.getTopFiveCitiesForTopTechnology.bind(controller))

@@ -2,7 +2,7 @@ import { Model } from "mongoose"
 import { ErrorMaker } from "../../../utils/ErrorMaker"
 import { TechSearchType } from "../types/TechSearchType"
 
-export class TechSeacherRepository {
+export class TechSearchRepository {
     constructor(private model: Model<TechSearchType>, private errorMaker: ErrorMaker){}
 
     async findOne(technologyId: string, cityId: string){

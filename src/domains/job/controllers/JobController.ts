@@ -22,12 +22,9 @@ export class JobController {
             siteLink: yup.string().url().required('Site link is required'),
             user: yup.string().required('User is required')
         })
-
-        console.log('Antes da validação:', body)
         
         try{
             await bodyValidation.validate(body)
-            console.log('Após a validação, antes da criação:', body)
         }catch(error: any){
             return res.status(StatusCode.BAD_REQUEST)
             .json(this.errorMaker.makeError(error.errors, StatusCode.BAD_REQUEST))
@@ -52,6 +49,20 @@ export class JobController {
         }
     }
 
+    async getById(req: Request, res: Response) {
+        const { id } = req.params
+        try {
+            const job = await this.service.findById(id)
+            if (!job) {
+                return res.status(StatusCode.NOT_FOUND)
+                .json(this.errorMaker.makeError('Job not found', StatusCode.NOT_FOUND))
+            }
+            res.send(job)
+        } catch (error) {
+            res.status(500).send({ error: 'Server error' })
+        }
+    }
+
     async update(req: Request, res: Response) {
         const { id } = req.params
         const jobData = req.body
@@ -65,7 +76,6 @@ export class JobController {
             }
     
             const updatedJob = await this.service.update(id, jobData)
-    
             return res.status(StatusCode.OK).json(updatedJob)
         } catch (error: any) {
             return res.status(StatusCode.INTERNAL_SERVER_ERROR)

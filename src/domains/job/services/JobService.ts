@@ -39,14 +39,10 @@ export class JobService {
             technologies: technologyEntries.map((tech) => tech._id)
         }
 
-        console.log('Dentro do serviço, antes de salvar:', data)
-
         try{
             const job = await this.repository.create(jobDataWithRefs as unknown as JobType)
-            console.log('Job criada com sucesso:', job)
             return job
         } catch(error: any){
-            console.error('Erro ao criar a vaga:', error)
             return this.errorMaker.makeError('Error creating job', StatusCode.BAD_REQUEST)
         }
     }
@@ -107,7 +103,7 @@ export class JobService {
         try{
             const result = await this.repository.delete(id)
             if(!result){
-                return this.errorMaker.makeError('Favorite not found', StatusCode.NOT_FOUND)
+                return this.errorMaker.makeError('Job not found', StatusCode.NOT_FOUND)
             }
             return result
         } catch(error: any){

@@ -77,7 +77,6 @@ export class JobRepository {
             if (!updatedJob) {
                 return this.errorMaker.makeError('Job not found', StatusCode.NOT_FOUND)
             }
-    
             return updatedJob;
         } catch (error: any) {
             return this.errorMaker.makeError('Error updating job', StatusCode.INTERNAL_SERVER_ERROR)
@@ -85,12 +84,12 @@ export class JobRepository {
     }
     
     async delete(id: string){
-        console.log('Erro aqui')
         try{
             const result = await this.model.findByIdAndDelete(id)
             if(!result){
                 return this.errorMaker.makeError('job not found', StatusCode.NOT_FOUND)
             }
+            return result
         } catch(error: any){
             return this.errorMaker.makeError('Error deleting job', StatusCode.INTERNAL_SERVER_ERROR)
         }
