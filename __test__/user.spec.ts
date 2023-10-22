@@ -1,6 +1,6 @@
 import { path } from '../src/index'
 import request from 'supertest'
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+import { afterEach, beforeEach, describe, expect, it} from "vitest"
 import { Database } from "../src/database/Database"
 import mongoose from 'mongoose'
 
