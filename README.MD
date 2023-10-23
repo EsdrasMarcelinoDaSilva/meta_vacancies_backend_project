@@ -38,13 +38,13 @@
 
 ## Como utilizar
 
-1. variavies de hambientes para a string de conexão com o MongoDBa, porta e a hash 
+1. variavies de hambiente para a string de conexão com o MongoDBa, porta e a hash 
 
 2. npm run start para inicializar a API
 
 3. npm run dev (modo de desenvolvimento)
 
-4. npm test para os testes 
+4. npm test para os testes(unitários e de intergração) 
 
 5. npm test:cov para coverage teste de cobertura
 
