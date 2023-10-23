@@ -1,12 +1,12 @@
 import { Types } from "mongoose"
 import { ErrorMaker } from "../../../utils/ErrorMaker"
 import { StatusCode } from "../../../utils/status.code"
-import { TechSeacherRepository } from "../repositories/TechSearchRepository"
+import { TechSearchRepository } from "../repositories/TechSearchRepository"
 import { TechSearchType } from "../types/TechSearchType"
 
 export class TechSearchService {
     constructor(
-        private repository: TechSeacherRepository, 
+        private repository: TechSearchRepository, 
         private errorMaker: ErrorMaker
     ){}
 
