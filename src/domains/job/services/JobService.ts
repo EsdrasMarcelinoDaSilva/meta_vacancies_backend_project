@@ -90,11 +90,11 @@ export class JobService {
             const updatedJob = await this.repository.update(id, jobData);
     
             if (!updatedJob) {
-                return this.errorMaker.makeError('Job not found', StatusCode.NOT_FOUND);
+                return this.errorMaker.makeError('Job not found', StatusCode.NOT_FOUND)
             }
             return updatedJob
         } catch (error: any) {
-            return this.errorMaker.makeError('Error updating job', StatusCode.BAD_REQUEST);
+            return this.errorMaker.makeError('Error updating job', StatusCode.BAD_REQUEST)
         }
     }
     

@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest"
 import bcrypt from 'bcrypt' 
 import { UserService } from './UserService'
 import { ErrorMaker } from "../../../utils/ErrorMaker"
+import { StatusCode } from "../../../utils/status.code"
 
 const errorMaker = new ErrorMaker
 
@@ -15,8 +16,8 @@ describe('UserService', () => {
         .mockResolvedValue({ name: 'client', email: 'client@email.com', password: '0000' })
 
         const result = await sut.create(paramsMock)
-
-        expect(result).toStrictEqual({error: true, message: 'User already exists', status: 400})
+        
+        expect(result).toStrictEqual({error: true, message: 'User already exists', status: StatusCode.BAD_REQUEST})
     })
     it('must be able to create a user', async () => {
         const paramsMock = { name: 'client', email: 'client@email.com', password: '0000' } as any
@@ -28,7 +29,6 @@ describe('UserService', () => {
 
         const result = await sut.create(paramsMock)
         
-
         expect(result).toStrictEqual(expected)
     })
 })

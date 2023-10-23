@@ -11,18 +11,6 @@ import { TechSearchRepository } from '../../techSearch/repositories/TechSearchRe
 import { TechSearchService } from '../../techSearch/services/TechSearchService'
 import { TechSearch } from '../../techSearch/model/TechSearch'
 
-// export class JobModule {
-//         static run(errorMaker: ErrorMaker){
-//             const repository = new JobRepository(Job, errorMaker)
-//             const cityRepository = new CityRepository(City, errorMaker)
-//             const technologyRepository = new TechnologyRepository(Technology)
-//             const service = new JobService(repository, cityRepository, technologyRepository, errorMaker)
-//             const controller = new JobController(service, errorMaker)
-//             return { repository, service, controller }
-//         }
-// }
-
-
 
 export class JobModule {
     static run(errorMaker: ErrorMaker){

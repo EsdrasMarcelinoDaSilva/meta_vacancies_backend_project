@@ -1,4 +1,4 @@
-import { ObjectId, Types } from "mongoose"
+import mongoose, { ObjectId, Types } from "mongoose"
 
 export type JobType = {
     title: string
@@ -9,7 +9,7 @@ export type JobType = {
     company: string
     jobDescription: string
     siteLink: string
-    user: ObjectId
+    user: mongoose.Schema.Types.ObjectId
 }
 export type JobTypeWithRefs = {
     title: string
