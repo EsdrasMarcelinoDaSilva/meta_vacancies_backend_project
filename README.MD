@@ -1,55 +1,107 @@
-## NODE EXPRESS TS TEMPLATE
+# 🔍 Meta Vacancies — API de Busca de Vagas
 
-1. Esse repositório é um template de API com NodeJs, Express e vitest para a conclusão do terceiro módulo da Arnia.
+API REST para busca e gerenciamento de vagas de emprego para desenvolvedores. Permite que candidatos se cadastrem, autentiquem e pesquisem oportunidades filtradas por tecnologia, nível e localização.
 
-## Sumário
+## ✨ Funcionalidades
 
-[Tecnologias](#tecnologias)
+- 🔐 **Autenticação JWT** com registro e login de usuários
+- 💼 **CRUD completo de vagas** (criação, listagem, atualização e remoção)
+- 👤 **Gestão de candidatos** e perfis
+- 🏢 **Gestão de empresas** anunciantes
+- 🔗 **Relacionamento entre entidades** (vaga ↔ empresa ↔ candidato)
+- ✅ **Testes unitários e de integração** com cobertura de código
 
-[Como instalar](#como-instalar)
+## 🛠️ Stack
 
-[Como utilizar](#como-utilizar)
+| Tecnologia | Uso |
+|---|---|
+| Node.js | Runtime |
+| TypeScript | Linguagem principal |
+| Express | Framework HTTP |
+| MongoDB + Mongoose | Banco de dados |
+| JWT + jsonwebtoken | Autenticação |
+| Yup | Validação de dados |
+| Vitest | Testes unitários |
+| Supertest | Testes de integração |
 
-[Diretorios](#diretorios)
+## 🚀 Como rodar localmente
 
-[Projeto](#projeto)
+### Pré-requisitos
+- Node.js 18+
+- MongoDB (local ou Atlas)
 
-## Tecnologias
+### Instalação
 
-1. NodeJs
+```bash
+# Clone o repositório
+git clone https://github.com/EsdrasMarcelinoDaSilva/meta_vacancies_backend_project.git
+cd meta_vacancies_backend_project
 
-2. Mongo (Mongoose)
+# Instale as dependências
+npm install
 
-3. vitest (Unitários) 
+# Configure as variáveis de ambiente
+cp .env.example .env
+```
 
-4. Supertest (Integração)
+### Variáveis de ambiente
 
-5. Express
+```env
+MONGO_URI=mongodb://localhost:27017/meta_vacancies
+PORT=3000
+JWT_SECRET=sua_chave_jwt_secreta
+```
 
-6. Typescript
+### Rodando a aplicação
 
-7. JWT jsonwebtoken
+```bash
+# Modo de desenvolvimento
+npm run dev
 
-8. Yup
+# Modo de produção
+npm run start
+```
 
-## Como instalar
+### Rodando os testes
 
-1. npm i
+```bash
+# Todos os testes (unitários + integração)
+npm test
 
-## Como utilizar
+# Cobertura de testes
+npm run test:cov
+```
 
-1. variavies de hambiente para a string de conexão com o MongoDBa, porta e a hash 
+## 📁 Estrutura do projeto
 
-2. npm run start para inicializar a API
+```
+meta_vacancies_backend_project/
+├── src/
+│   ├── controllers/   # Lógica das rotas
+│   ├── models/        # Modelos do MongoDB (Mongoose)
+│   ├── routes/        # Definição das rotas
+│   ├── middlewares/   # Autenticação JWT e validação
+│   └── services/      # Regras de negócio
+├── __test__/          # Testes unitários e de integração
+├── routes.ts          # Registro central de rotas
+└── tsconfig.json
+```
 
-3. npm run dev (modo de desenvolvimento)
+## 🔗 Principais endpoints
 
-4. npm test para os testes(unitários e de intergração) 
+| Método | Rota | Descrição | Auth |
+|---|---|---|---|
+| POST | `/auth/register` | Cadastro de usuário | ❌ |
+| POST | `/auth/login` | Login e geração de token | ❌ |
+| GET | `/vacancies` | Listar vagas | ✅ |
+| POST | `/vacancies` | Criar vaga | ✅ |
+| PUT | `/vacancies/:id` | Atualizar vaga | ✅ |
+| DELETE | `/vacancies/:id` | Remover vaga | ✅ |
+| GET | `/companies` | Listar empresas | ✅ |
 
-5. npm test:cov para coverage teste de cobertura
+## 🔧 Decisões técnicas
 
-## Projeto
-
-1. O projeto simula uma aplicação de buscas de vagas para programadores.
-
-2. É composta de cinco entidades.
+- **Vitest** — testes rápidos com API compatível com Jest, sem configuração extra
+- **Supertest** — testes de integração simulando requisições HTTP reais
+- **Yup** — validação declarativa de schemas nos DTOs de entrada
+- **Mongoose** — modelagem de dados com schemas tipados para MongoDB
